@@ -3,13 +3,15 @@ import "./home.css"
 import GET_PRODUCTS from './homeQueries';
 import { useQuery } from '@apollo/client';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Header } from '../../components';
+import { Header, ProductCard } from '../../components';
 
 const HomeScreen = () => {
   const {error, data, loading} = useQuery(GET_PRODUCTS);
   const [category, setCategory] = useState(0)
   const params = useParams()
   const navigate = useNavigate()
+
+  const products = loading ? null : data.categories[category].products
 
   useEffect(() => {
     if(!params.category){
@@ -28,9 +30,17 @@ const HomeScreen = () => {
     <main>
       {!loading && <Header/>}
       <section>
-        {loading ? "Loading..." : data.categories[category].products.map(item => (
+        {loading ? "Loading..." : products.map(item => (
           <div className='item' key={item.id}>
-            card
+            <ProductCard 
+                brand={item.brand} 
+                category={item.category} 
+                gallery={item.gallery}
+                id={item.id}
+                inStock={item.inStock}
+                name={item.name}
+                prices={item.prices}
+            />
           </div>
         )
         )}

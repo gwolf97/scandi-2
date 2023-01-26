@@ -1,0 +1,35 @@
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+}
+
+.img-container img{
+    height: 100%;
+    width: auto;
+}
+
+.card-cart-button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #5ece7b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    margin: 0 0 190px 190px;
+}
+
+.out-of-stock-overlay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: hsl(231, 6%, 58%, 0.3);
+    width: 250px;
+    height: 250px;
+}

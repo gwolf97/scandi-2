@@ -17,16 +17,6 @@ query{
         amount
       }
       brand
-      attributes{
-        id
-        name
-        type
-        items{
-          displayValue
-          value
-          id
-        }
-      }
     }
   }
 }
