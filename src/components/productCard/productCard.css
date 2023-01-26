@@ -40,6 +40,24 @@
     cursor: pointer;
 }
 
+.card-cart-button img{
+    width: 25px;
+    margin: 0px 0 0 -5px;
+}
+
+.wheels{
+    width: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 5px;
+}
+
+.wheels img{
+    height: 5px;
+    width: 5px;
+}
+
 .title-price-container{
     width: 100%;
     display: flex;
