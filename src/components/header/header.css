@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 1440px;
+    margin: 40px 80px;
+}
+
+h1{
+    font-family: "Raleway", "sans-serif";
+    font-size: 40px;
+    font-weight: 400;
+}
