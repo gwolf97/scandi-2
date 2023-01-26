@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const Nav = () => {
 
     const [selectedLink, setSelectedLink] = useState({
-        all:{color:"53ce7b"},
+        all:{},
         tech:{},
         clothes:{}
     })

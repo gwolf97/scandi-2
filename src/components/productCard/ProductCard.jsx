@@ -1,9 +1,12 @@
 import React,{ useState } from 'react'
 import "./productCard.css"
+import { useNavigate } from 'react-router-dom'
 
-const ProductCard = ({brand, gallery, id, inStock, name, prices}) => {
+const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
 
   const [showCartBtn, setShowCartBtn] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleMouseOver = () => {
     setShowCartBtn(true)
@@ -13,9 +16,13 @@ const ProductCard = ({brand, gallery, id, inStock, name, prices}) => {
     setShowCartBtn(false)
   }
 
+  const handleClick = () => {
+    navigate(`/${category}/${id}`)
+  }
+
   return (
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='card'>
-        <div className='img-container'>
+        <div onClick={handleClick} className='img-container'>
           {!inStock && (<div className='out-of-stock-overlay'>out of stock</div>)}
           <img src={gallery[0]} alt={name} />
         </div>
@@ -29,7 +36,7 @@ const ProductCard = ({brand, gallery, id, inStock, name, prices}) => {
           </div>
         )}
         <div className='title-price-container'>
-          <p className='title'>{brand} {name}</p>
+          <p onClick={handleClick} className='title'>{brand} {name}</p>
           <p className='price'>{prices[0].currency.symbol}{prices[0].amount}</p>
         </div>
     </div>
