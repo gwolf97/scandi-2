@@ -12,8 +12,8 @@ const ProductCard = ({brand, gallery, id, inStock, name, prices}) => {
           
         </div>
         <div className='title-price-container'>
-          <p>{brand} {name}</p>
-          <p>{prices[0].currency.symbol}{prices[0].amount}</p>
+          <p className='title'>{brand} {name}</p>
+          <p className='price'>{prices[0].currency.symbol}{prices[0].amount}</p>
         </div>
     </div>
   )

@@ -1,9 +1,24 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+    max-width: 400px;
+}
+
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .img-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .img-container img{
@@ -21,7 +36,33 @@
     justify-content: center;
     flex-direction: column;
     position: absolute;
-    margin: 0 0 190px 190px;
+    margin: 260px 0 0 260px;
+    cursor: pointer;
+}
+
+.title-price-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding:20px 0 0 0 ;
+    font-family: "Raleway", sans-serif;
+}
+
+.title{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.title:hover{
+    color: #5ece7b;
+    cursor: pointer;
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .out-of-stock-overlay{
@@ -30,6 +71,6 @@
     justify-content: center;
     position: absolute;
     background-color: hsl(231, 6%, 58%, 0.3);
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
 }
