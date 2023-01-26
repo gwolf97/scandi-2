@@ -1,0 +1,10 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item {
+    flex: 0 0 calc(33.33% - 20px); /* set the width of each item to take up 33.33% of the container, with a 20px margin */
+    margin: 10px;
+}
