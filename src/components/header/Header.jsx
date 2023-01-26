@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import "./header.css"
+import {capitalizeFirstLetter} from "../../utils/index"
 
 const Header = () => {
     const params = useParams()
@@ -8,7 +9,9 @@ const Header = () => {
   return (
     <div className='container'>
         <h1>
-            {params.category === "all" ? "All Products" : params.category.toUpperCase()}
+            { params.category === "all" 
+            ? "All Products" 
+            : capitalizeFirstLetter(params.category) }
         </h1>
     </div>
   )

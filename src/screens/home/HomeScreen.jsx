@@ -26,9 +26,9 @@ const HomeScreen = () => {
   
   return (
     <main>
-      <Header/>
+      {!loading && <Header/>}
       <section>
-        {loading ? loading : data.categories[category].products.map(item => (
+        {loading ? "Loading..." : data.categories[category].products.map(item => (
           <div className='item' key={item.id}>
             card
           </div>
