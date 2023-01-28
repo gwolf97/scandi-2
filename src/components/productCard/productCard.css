@@ -68,17 +68,17 @@
     font-family: "Raleway", sans-serif;
 }
 
-.title{
+.card-title{
     font-size: 18px;
     font-weight: 300;
 }
 
-.title:hover{
+.card-title:hover{
     color: #5ece7b;
     cursor: pointer;
 }
 
-.price{
+.card-price{
     font-size: 18px;
     font-weight: 500;
 }

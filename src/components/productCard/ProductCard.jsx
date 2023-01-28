@@ -36,8 +36,8 @@ const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
           </div>
         )}
         <div className='title-price-container'>
-          <p onClick={handleClick} className='title'>{brand} {name}</p>
-          <p className='price'>{prices[0].currency.symbol}{prices[0].amount}</p>
+          <p onClick={handleClick} className='card-title'>{brand} {name}</p>
+          <p className='card-price'>{prices[0].currency.symbol}{prices[0].amount}</p>
         </div>
     </div>
   )

@@ -37,9 +37,95 @@ section{
 }
   
   .controls-description { grid-area: controls-description;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     min-width: 400px;
-
+    padding:0 0 30px 10px;
 }
-  
+
+.pdp-title{
+  width: 100%;
+  line-height: 35px;
+  margin-bottom: 15px ;
+}
+
+.pdp-brand{
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.pdp-name{
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.attribute, .pdp-price p{
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.pdp-price{
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 23px;
+  margin-top: 10px;
+  line-height: 35px;
+}
+
+.attribute-btns-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.attribute-btn{
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 65px;
+  height: 45px;
+  margin-right: 10px;
+}
+
+.attribute-btn:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.pdp-add-to-cart-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 292px;
+  height: 52px;
+  background-color: #5ece7b;
+  color: white;
+  border: none;
+  margin: 15px 0 40px 0;
+  cursor: pointer;
+}
+
+.pdp-add-to-cart-btn:active {
+  -webkit-box-shadow: inset 1px 1px 10px #333;
+  -moz-box-shadow: inset 1px 1px 10px #333;
+  box-shadow: inset 1px 1px 10px #333;
+}
+
+.description{
+  font-family: "Roboto", "sans-serrif";
+  font-size: 14px;
+  font-weight: 500;
+}
 
