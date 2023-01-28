@@ -6,13 +6,13 @@ nav{
     align-items: center;
     width: 1440px;
     height: 80px;
-
+    padding: 0 80px;
 }
 
 .link{
-    margin-left: 80px;
+    margin-right: 70px;
     list-style: none;
-    font-size: 20px;
+    font-size: 16px;
     text-decoration: none;
     color: black;
     position: relative;
@@ -73,5 +73,4 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 80px;
   }
