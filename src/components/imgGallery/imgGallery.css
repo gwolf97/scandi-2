@@ -1,0 +1,25 @@
+.y-gallery-container{
+    height: 520px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.y-gallery-container::-webkit-scrollbar {
+    display: none;
+  }
+
+.y-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 20px;
+    scroll-snap-align: start;
+    cursor: pointer;
+}
+
+.y-img{
+    max-height: 110px;
+    max-width: 110px;
+}
