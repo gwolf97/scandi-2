@@ -14,22 +14,42 @@ const ProductScreen = () => {
     amount:"",
     symbol:""
   })
+  const [selectedAttributes, setSelectedAttributes] = useState({})
 
   const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` } });
 
-  const {attributes, name, brand, description} = !loading && data.product
-
-  console.log(price)
+  const {attributes, name, brand, description, inStock} = !loading && data.product
 
   useEffect(() => {
-    !loading && setSelectedImg(data.product.gallery[0])
-    !loading && setGallery(data.product.gallery)
-    !loading && setPrice({
-      amount:data.product.prices[0].amount,
-      symbol:data.product.prices[0].currency.symbol
-    })
+    setSelectedAttributes({})
+    if(!loading){
+      setSelectedImg(data.product.gallery[0])
+      setGallery(data.product.gallery)
+      setPrice({
+        amount:data.product.prices[0].amount,
+        symbol:data.product.prices[0].currency.symbol
+      })
+      const attributesData = !loading && attributes.reduce((acc, attribute) => {
+        acc[attribute.name] = attribute.items[0];
+        return acc;
+    }, {});
+      setSelectedAttributes(attributesData);
+    }
   },[loading])
 
+  console.log(selectedAttributes)
+
+  const handleSelect = (value, id, displayValue, name) => {
+    const updateSelected = {
+      ...selectedAttributes, 
+      [name]:{
+        displayValue: displayValue,
+        value: value,
+        id: id
+      }}
+
+      setSelectedAttributes(updateSelected)
+  }
 
   return (
     <section>
@@ -53,10 +73,20 @@ const ProductScreen = () => {
                         {attribute.items && attribute.items.map(item => (
                           <div 
                           className='attribute-btn'
-                          key={item.id} 
-                          style={attribute.id === "Color" 
+                          onClick={() => handleSelect(item.value, item.id, item.displayValue, attribute.name)}
+                          key={item.id}
+                          style={attribute.id === "Color"
                           ? {color:item.value, backgroundColor:item.value} 
-                          : {color:"black"}} 
+                          : {
+                              color:
+                              selectedAttributes[attribute.name]?.value === item.value 
+                              ? "white" : "black", 
+                              border:
+                              selectedAttributes[attribute.name]?.value === item.value 
+                              ? "5px solid black" : "1px solid black", 
+                              backgroundColor: 
+                              selectedAttributes[attribute.name]?.value === item.value 
+                              ? "black" : "white"}} 
                           >
                             {attribute.name === "Size"  ?  item.value : item.displayValue}
                           </div>
@@ -69,11 +99,16 @@ const ProductScreen = () => {
                   <p>PRICE:</p>
                   {price.symbol}{price.amount}
           </div>
-          <div className='pdp-add-to-cart-btn'>
-                  ADD TO CART
+          <div 
+            className='pdp-add-to-cart-btn' 
+            style={!inStock 
+              ? {background:"lightgray", color:"gray", cursor:"not-allowed"} 
+              : {display:"flex"}}
+          >
+            {inStock ? "ADD TO CART" : "OUT OF STOCK"}
           </div>
           <div className='description'>
-                  {`${description}`}
+            {`${description}`}
           </div>
         </div>
       </div>
