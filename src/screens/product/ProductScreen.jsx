@@ -37,8 +37,6 @@ const ProductScreen = () => {
     }
   },[loading])
 
-  console.log(selectedAttributes)
-
   const handleSelect = (value, id, displayValue, name) => {
     const updateSelected = {
       ...selectedAttributes, 

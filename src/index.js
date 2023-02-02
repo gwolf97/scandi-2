@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ApolloClient, ApolloProvider , InMemoryCache} from '@apollo/client'
-
+import {Provider} from "react-redux"
+import store from "./store"
 
 
 const client = new ApolloClient({
@@ -14,12 +15,12 @@ const client = new ApolloClient({
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App client={client} />
-    </ApolloProvider>
-  </React.StrictMode>,
-);
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <App client={client} />
+          </ApolloProvider>
+        </Provider>
+,);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
