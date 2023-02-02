@@ -18,7 +18,7 @@ const ProductScreen = () => {
 
   const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` } });
 
-  const {attributes, name, brand, description, inStock} = !loading && data.product
+  const {attributes, name, brand, description, inStock, prices} = !loading && data.product
 
   useEffect(() => {
     setSelectedAttributes({})
@@ -47,6 +47,19 @@ const ProductScreen = () => {
       }}
 
       setSelectedAttributes(updateSelected)
+  }
+
+  const handleAddToCart = () => {
+    const item = {
+      selectedAttributes: selectedAttributes,
+      name:name,
+      brand:brand,
+      gallery:gallery,
+      prices:prices,
+    }
+
+    console.log(item)
+    
   }
 
   return (
@@ -98,7 +111,8 @@ const ProductScreen = () => {
                   {price.symbol}{price.amount}
           </div>
           <div 
-            className='pdp-add-to-cart-btn' 
+            className='pdp-add-to-cart-btn'
+            onClick={() => handleAddToCart()} 
             style={!inStock 
               ? {background:"lightgray", color:"gray", cursor:"not-allowed"} 
               : {display:"flex"}}
