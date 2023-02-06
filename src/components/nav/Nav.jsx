@@ -1,6 +1,7 @@
 import React, { useState }  from 'react'
 import "./nav.css"
 import { Link } from "react-router-dom"
+import {useSelector} from "react-redux"
 
 
 const Nav = () => {
@@ -15,6 +16,10 @@ const Nav = () => {
         setSelectedLink({all:{},tech:{},clothes:{}})
         setSelectedLink({[e.target.id]:{color:"#5ece7b"}})
     }
+
+    const {cartItems} = useSelector(state => state.cart)
+
+    const cartQty = cartItems.reduce((total, item) => total + item.qty, 0)
 
   return (
     <nav>
@@ -40,7 +45,7 @@ const Nav = () => {
                         <img src="../images/Vector.png" alt=""/>
                     </div> 
                     <div className="cart-amount">
-                        <p>1</p>
+                        <p>{cartQty}</p>
                     </div>
                     <div className="nav-wheels">
                         <img src="../images/wheel.png" alt="" />
