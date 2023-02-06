@@ -4,9 +4,14 @@ import { useQuery } from '@apollo/client'
 import { useParams } from 'react-router-dom'
 import GET_PRODUCT_BY_ID from "./productQueries"
 import { ImgGallery } from '../../components'
+import { useDispatch, useSelector} from "react-redux"
+import { addToCart } from '../../actions/cartActions'
+
 
 const ProductScreen = () => {
   const params = useParams()
+  const dispatch = useDispatch()
+
 
   const [selectedImg, setSelectedImg] = useState("")
   const [gallery, setGallery] = useState([])
@@ -56,9 +61,11 @@ const ProductScreen = () => {
       brand:brand,
       gallery:gallery,
       prices:prices,
+      id: params.id,
+      qty: 1
     }
 
-    console.log(item)
+    dispatch(addToCart(item))
     
   }
 
