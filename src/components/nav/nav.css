@@ -74,3 +74,74 @@ nav{
     justify-content: center;
     align-items: center;
   }
+
+  .nav-controls {
+    display: flex;
+    font-size: 18px;
+    padding: 34px 101px 32px 0;
+  }
+
+  .nav-currency-selector{
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .nav-currency-selector .arrow {
+    margin-left: 8px;
+    padding-bottom: 2px;
+  }
+
+
+.full-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+
+
+.cart {
+  margin-left: 22px;
+  position: relative;
+  top: 0.5px;
+  right: 18px;
+}
+
+.cart-amount {
+  background-color: black;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  padding-bottom: 0px;
+  margin: -10px 0 5px 15px;
+}
+
+
+.nav-wheels img {
+  margin-right: 2px;
+  height: 6px;
+  width: 6px;
+}
+
+.nav-wheels{
+  margin-left: -18px;
+  margin-top: -5.8px;
+  width: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 5px;
+}
+

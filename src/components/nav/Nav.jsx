@@ -28,9 +28,25 @@ const Nav = () => {
             <img src="./images/svg19.png" className="logo-arrow" alt="" />
             <img src="./images/svg 21.png" className="logo-point" alt="" />
         </div>
-        <div className='dropdowns'>
-            <p>$</p>
-            <p>Cart</p>
+        <div className="nav-controls">
+                <div
+                    className="nav-currency-selector"
+                > 
+                    $ 
+                    <img src="../images/arrow.png" className="arrow" alt="" />
+                </div>
+                <div className="full-cart" >
+                    <div className="cart">
+                        <img src="../images/Vector.png" alt=""/>
+                    </div> 
+                    <div className="cart-amount">
+                        <p>1</p>
+                    </div>
+                    <div className="nav-wheels">
+                        <img src="../images/wheel.png" alt="" />
+                        <img src="../images/wheel.png" alt="" />
+                    </div>
+                </div>
         </div>
     </nav>
   )
