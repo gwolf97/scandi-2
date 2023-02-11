@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import "./header.css"
 import {capitalizeFirstLetter} from "../../utils/index"
 
-const Header = () => {
+const Header = (title, isCapital) => {
     const params = useParams()
 
   return (
@@ -11,6 +11,8 @@ const Header = () => {
         <h1>
             { params.category === "all" 
             ? "All Products" 
+            : window.location.pathname === "/cart" 
+            ? "CART" 
             : capitalizeFirstLetter(params.category) }
         </h1>
     </div>

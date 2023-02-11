@@ -2,6 +2,7 @@ import React, { useState }  from 'react'
 import "./nav.css"
 import { Link } from "react-router-dom"
 import {useSelector} from "react-redux"
+import { useNavigate } from 'react-router-dom'
 
 
 const Nav = () => {
@@ -20,6 +21,12 @@ const Nav = () => {
     const {cartItems} = useSelector(state => state.cart)
 
     const cartQty = cartItems.reduce((total, item) => total + item.qty, 0)
+
+    const navigate = useNavigate()
+
+    const handleClickCart = () => {
+        navigate("/cart")
+    }
 
   return (
     <nav>
@@ -40,7 +47,7 @@ const Nav = () => {
                     $ 
                     <img src="../images/arrow.png" className="arrow" alt="" />
                 </div>
-                <div className="full-cart" >
+                <div onClick={handleClickCart} className="full-cart" >
                     <div className="cart">
                         <img src="../images/Vector.png" alt=""/>
                     </div> 
