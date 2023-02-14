@@ -57,12 +57,13 @@ const ProductScreen = () => {
   const handleAddToCart = () => {
     const item = {
       selectedAttributes: selectedAttributes,
+      attributes:attributes,
       name:name,
       brand:brand,
       gallery:gallery,
       prices:prices,
       id: params.id,
-      qty: 1
+      qty: 1,
     }
 
     dispatch(addToCart(item))

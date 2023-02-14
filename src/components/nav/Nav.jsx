@@ -51,7 +51,7 @@ const Nav = () => {
                     <div className="cart">
                         <img src="../images/Vector.png" alt=""/>
                     </div> 
-                    <div className="cart-amount">
+                    <div style={cartQty === 0 ? {display:"none"} : {display:"flex"}} className="cart-amount">
                         <p>{cartQty}</p>
                     </div>
                     <div className="nav-wheels">
