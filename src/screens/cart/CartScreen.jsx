@@ -26,24 +26,28 @@ const CartScreen = () => {
                     <div className='item-price'>{item.prices[0].amount}</div>
                   </div>
                   <div>
-                    {Object.entries(item.selectedAttributes)
-                    .map(([key, value]) => (
+                    {item.attributes
+                    .map((att) => (
                     <div className='attributes-container'>
-                      <div className='attribute-key'>{key.toUpperCase()}:</div>
-                      <div 
-                          className='attribute-value' 
-                          style={
-                            key.toLocaleLowerCase() === "color" 
-                            ? {
-                                backgroundColor:`${value.value}`, 
-                                color:`${value.value}`,
-                                border: "1px solid #5ece7b",
-                                width:"32px",
-                                height:"32px"
-                              }
-                            :{background:"black"}
-                            }>
-                        {value.displayValue}
+                      <div className='attribute-key'>{att.id.toUpperCase()}:</div>
+                      <div className='attribute-values-container'>
+                        {att.items.map(val => (
+                          <div 
+                              className='attribute-value' 
+                              style={
+                                att.id.toLocaleLowerCase() === "color" 
+                                ? {
+                                    backgroundColor:`${val.value}`, 
+                                    color:`${val.value}`,
+                                    width:"32px",
+                                    height:"32px",
+                                    fontSize:"0"
+                                  }
+                                : {background:""}
+                          }>
+                            {val.displayValue}
+                          </div>
+                        ))}
                       </div>
                     </div> 
                     ))}
