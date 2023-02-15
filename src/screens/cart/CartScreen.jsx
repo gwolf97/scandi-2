@@ -9,8 +9,6 @@ const CartScreen = () => {
   const cart = useSelector(state => state.cart.cartItems)
 
   const cartArray = Object.values(cart)
-
-  console.log(cartArray)
   
   return (
     <div>
@@ -35,14 +33,26 @@ const CartScreen = () => {
                           <div 
                               className='attribute-value' 
                               style={
-                                att.id.toLocaleLowerCase() === "color" 
+                                att.id.toLocaleLowerCase() === "color" && val.displayValue === item.selectedAttributes[att.id].displayValue 
                                 ? {
                                     backgroundColor:`${val.value}`, 
                                     color:`${val.value}`,
                                     width:"32px",
                                     height:"32px",
-                                    fontSize:"0"
+                                    fontSize:"0",
+                                    border:"2px solid #5ECE7B"
                                   }
+                                : att.id.toLocaleLowerCase() === "color"
+                                ? {
+                                  backgroundColor:`${val.value}`, 
+                                  color:`${val.value}`,
+                                  width:"32px",
+                                  height:"32px",
+                                  fontSize:"0",
+                                  border:"none"
+                                }
+                                : val.displayValue === item.selectedAttributes[att.id].displayValue 
+                                ? {background:"#1D1F22", color:"#ffffff"}
                                 : {background:""}
                           }>
                             {val.displayValue}
