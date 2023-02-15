@@ -40,7 +40,7 @@ const CartScreen = () => {
                                     width:"32px",
                                     height:"32px",
                                     fontSize:"0",
-                                    border:"2px solid #5ECE7B"
+                                    border:"1px solid #5ECE7B",
                                   }
                                 : att.id.toLocaleLowerCase() === "color"
                                 ? {
@@ -66,14 +66,20 @@ const CartScreen = () => {
 
                 <div className='item-gallery-qty-container'>
                   <div className='item-qty-container'>
-                    <div className='item-qty-add'>add</div>
+                    <div className='item-qty-add'>+</div>
                     <div className='item-qty'>{item.qty}</div>
-                    <div className='item-qty-sub'>sub</div>
+                    <div className='item-qty-sub'>-</div>
                   </div>
                   <div className='item-gallery-container'>
-                    {item.gallery.map(img => (
-                    <img src={img}/>
-                    ))}
+                    <div onClick={e => e.target.parentElement.scrollBy(-100, 0)}  className='arrow-container-left'>
+                      <img src="./images/gallery-left.png" alt="" className="gallery-left" />
+                    </div>
+                      {item.gallery.map(img => (
+                        <img src={img}/>
+                      ))}
+                    <div onClick={e => e.target.parentElement.scrollBy(100, 0)} className='arrow-container'>
+                      <img  src="./images/gallery-left.png" alt="" className="gallery-right-right" />
+                    </div>
                   </div>
                 </div>
             </div>
