@@ -82,6 +82,10 @@ nav{
   }
 
   .nav-currency-selector{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
     font-family: "Raleway", sans-serif;
     font-size: 18px;
@@ -90,7 +94,7 @@ nav{
 
   .nav-currency-selector .arrow {
     margin-left: 8px;
-    padding-bottom: 2px;
+    padding-top: 3px;
   }
 
 
@@ -145,3 +149,26 @@ nav{
   padding: 0 0 0 5px;
 }
 
+
+/******************* Currency Selector *********************/
+/******************* Currency Selector *********************/
+/******************* Currency Selector *********************/
+
+.currency-selector-container{
+  position: absolute;
+  top: 65px;
+  margin-left: -12px;
+}
+
+.currency{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 16px;
+  padding: 9px 10px;
+  width: 120px;
+}
+
+.currency:hover{
+  background-color: rgba(211, 211, 211, 0.456);
+}

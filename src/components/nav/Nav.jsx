@@ -3,10 +3,24 @@ import "./nav.css"
 import { Link } from "react-router-dom"
 import {useSelector} from "react-redux"
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+
+const CurrencySelector = () => {
+    return (
+        <div className='currency-selector-container'>
+            <div className='currency'>$ USD</div>
+            <div className='currency'>£ GBP</div>
+            <div className='currency'>A$ AUD</div>
+            <div className='currency'>₽ RUB</div>
+            <div className='currency'>¥ JPY</div>
+        </div>
+    )
+}
 
 
 const Nav = () => {
 
+    const [isSelectorOpen, setIsSelectorOpen] = useState(false)
     const [selectedLink, setSelectedLink] = useState({
         all:{},
         tech:{},
@@ -28,6 +42,13 @@ const Nav = () => {
         navigate("/cart")
     }
 
+    useEffect(() => {
+        if(window.location.pathname === "/cart"){
+            setSelectedLink({all:{},tech:{},clothes:{}})
+        }
+    },[window.location.pathname])
+
+
   return (
     <nav>
         <div className='links'>
@@ -41,11 +62,10 @@ const Nav = () => {
             <img src="./images/svg 21.png" className="logo-point" alt="" />
         </div>
         <div className="nav-controls">
-                <div
-                    className="nav-currency-selector"
-                > 
-                    $ 
-                    <img src="../images/arrow.png" className="arrow" alt="" />
+                <div onClick={() => setIsSelectorOpen(!isSelectorOpen)} className="nav-currency-selector"> 
+                    <p>$</p> 
+                    <img style={isSelectorOpen ? {transform: "rotate(180deg)"} : {display:""}} src="../images/arrow.png" className="arrow" alt="" />
+                    {isSelectorOpen && CurrencySelector()}
                 </div>
                 <div onClick={handleClickCart} className="full-cart" >
                     <div className="cart">

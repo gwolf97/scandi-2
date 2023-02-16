@@ -24,6 +24,7 @@
 .img-container img{
     height: 100%;
     width: auto;
+    object-fit: contain;
 }
 
 .card-cart-button{
