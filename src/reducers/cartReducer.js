@@ -27,11 +27,27 @@ export const cartReducer = (state = {cartItems: []}, action) =>{
                   cartItems: [...state.cartItems, item]
                 }
               }
-            case CART_REMOVE_ITEM:
-              return {
-                ...state,
-                cartItems: state.cartItems.filter(x => x.product !== action.payload)
-              }
+              case CART_REMOVE_ITEM:
+                const removeItem = action.payload
+                const isExistItem = state.cartItems.find(x => x.id === removeItem.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(removeItem.selectedAttributes))
+                if (isExistItem) {
+                  return {
+                    ...state,
+                    cartItems: state.cartItems.map(x => {
+                      if (x.id === removeItem.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(removeItem.selectedAttributes) && x.qty > 1) {
+                        return {
+                          ...x,
+                          qty: x.qty - 1
+                        }
+                      } else if (x.id === removeItem.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(removeItem.selectedAttributes) && x.qty === 1) {
+                        return null
+                      }
+                      return x
+                    }).filter(x => x !== null)
+                  }
+                } else {
+                  return state
+                }                    
             default:
               return state
           }

@@ -1,14 +1,27 @@
 import React from 'react'
 import { Header} from '../../components'
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import "./cart.css"
+import { addToCart, removeFromCart } from '../../actions/cartActions'
 
 
 const CartScreen = () => {
 
+  const dispatch = useDispatch()
+
   const cart = useSelector(state => state.cart.cartItems)
 
   const cartArray = Object.values(cart)
+
+  console.log(cart)
+
+  const handleAdd = (product) => {
+    dispatch(addToCart(product))
+  }
+
+  const handleSubtract = (product) => {
+    dispatch(removeFromCart(product))
+  } 
   
   return (
     <div>
@@ -66,9 +79,9 @@ const CartScreen = () => {
 
                 <div className='item-gallery-qty-container'>
                   <div className='item-qty-container'>
-                    <div className='item-qty-add'>+</div>
+                    <div onClick={() => handleAdd(item)} className='item-qty-add'>+</div>
                     <div className='item-qty'>{item.qty}</div>
-                    <div className='item-qty-sub'>-</div>
+                    <div onClick={() => handleSubtract(item)} className='item-qty-sub'>-</div>
                   </div>
                   <div className='item-gallery-container'>
                     <div onClick={e => e.target.parentElement.scrollBy(-100, 0)}  className='arrow-container-left'>
