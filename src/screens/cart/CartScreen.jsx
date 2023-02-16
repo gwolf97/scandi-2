@@ -98,16 +98,19 @@ const CartScreen = () => {
                     <div onClick={() => handleSubtract(item)} className='item-qty-sub'>-</div>
                   </div>
                   <div className='item-gallery-container'>
-                    <div onClick={e => e.target.parentElement.scrollBy(-100, 0)}  className='arrow-container-left'>
-                      <img src="./images/gallery-left.png" alt="" className="gallery-left" />
-                    </div>
                       {item.gallery.map(img => (
                         <img src={img}/>
                       ))}
-                    <div onClick={e => e.target.parentElement.scrollBy(100, 0)} className='arrow-container'>
-                      <img  src="./images/gallery-left.png" alt="" className="gallery-right-right" />
-                    </div>
                   </div>
+                   {item.gallery.length > 1 && (
+                    <>
+                      <div onClick={(e) => e.target.parentElement.children[1].scrollBy(-100, 0)}  className='arrow-container-left'>
+                        <img src="./images/gallery-left.png" alt="" className="gallery-left" />
+                      </div>
+                      <div onClick={(e) => e.target.parentElement.children[1].scrollBy(100, 0)} className='arrow-container-right'>
+                        <img src="./images/gallery-left.png" alt="" className="gallery-right" />
+                      </div>
+                    </>)}
                 </div>
             </div>
            ))} 
