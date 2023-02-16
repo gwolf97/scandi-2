@@ -13,7 +13,21 @@ const CartScreen = () => {
 
   const cartArray = Object.values(cart)
 
-  console.log(cart)
+  const sumQty = (items) => {
+    const totalQty = items.reduce((acc, item) => {
+      return acc + item.qty;
+    }, 0);
+  
+    return totalQty;
+  };
+
+  const total = (items) => {
+    return items.reduce((acc, item) => {
+      const price = item.prices[0].amount;
+      const qty = item.qty;
+      return acc + (price * qty);
+    }, 0);
+  }
 
   const handleAdd = (product) => {
     dispatch(addToCart(product))
@@ -97,6 +111,12 @@ const CartScreen = () => {
                 </div>
             </div>
            ))} 
+      </div>
+      <div className='total-container'>
+          <p>Tax: <span>{cart[0].prices[0].currency.symbol}0</span></p>
+          <p>Quantity: <span>{sumQty(cart)}</span></p>
+          <p>Total: <span>{cart[0].prices[0].currency.symbol}{total(cart).toFixed(2)}</span></p>
+          <div className='order-btn'>ORDER</div>
       </div>
     </div>
   )
