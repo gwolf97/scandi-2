@@ -51,16 +51,18 @@ const Nav = () => {
                     <img style={isSelectorOpen ? {transform: "rotate(180deg)"} : {display:""}} src="../images/arrow.png" className="arrow" alt="" />
                     {isSelectorOpen && <CurrencySelector/>}
                 </div>
-                <div onClick={() => {setIsCartOpen(!isCartOpen) ; setIsSelectorOpen(false)}} className="full-cart" >
-                    <div className="cart">
-                        <img src="../images/Vector.png" alt=""/>
-                    </div> 
-                    <div style={cartQty === 0 ? {display:"none"} : {display:"flex"}} className="cart-amount">
-                        <p>{cartQty}</p>
-                    </div>
-                    <div className="nav-wheels">
-                        <img src="../images/wheel.png" alt="" />
-                        <img src="../images/wheel.png" alt="" />
+                <div  >
+                    <div className="full-cart" onClick={() => {setIsCartOpen(!isCartOpen) ; setIsSelectorOpen(false)}}>
+                        <div className="cart">
+                            <img src="../images/Vector.png" alt=""/>
+                        </div> 
+                        <div style={cartQty === 0 ? {display:"none"} : {display:"flex"}} className="cart-amount">
+                            <p>{cartQty}</p>
+                        </div>
+                        <div className="nav-wheels">
+                            <img src="../images/wheel.png" alt="" />
+                            <img src="../images/wheel.png" alt="" />
+                        </div>
                     </div>
                     {isCartOpen && <MiniCart/>}
                 </div>

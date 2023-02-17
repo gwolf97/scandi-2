@@ -84,7 +84,7 @@ const MiniCart = () => {
                                   ? {background:"#1D1F22", color:"#ffffff"}
                                   : {background:""}
                             }>
-                              {val.displayValue}
+                                {val.displayValue === "Small" || val.displayValue === "Medium" || val.displayValue === "Large" ? val.displayValue.slice(0,1) : val.displayValue === "Extra Large" ? "XL" : val.displayValue}
                             </div>
                           ))}
                         </div>
@@ -100,9 +100,7 @@ const MiniCart = () => {
                       <div onClick={() => handleSubtract(item)} className='mini-item-qty-sub'>-</div>
                     </div>
                     <div className='mini-item-gallery-container'>
-                        {item.gallery.map(img => (
-                          <img src={img}/>
-                        ))}
+                          <img src={item.gallery[0]}/>
                     </div>
                      {item.gallery.length > 1 && (
                       <>
