@@ -4,12 +4,13 @@ import { Link } from "react-router-dom"
 import { useSelector} from "react-redux"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { CurrencySelector } from '../index' 
+import { CurrencySelector, MiniCart } from '../index' 
 
 
 const Nav = () => {
 
     const [isSelectorOpen, setIsSelectorOpen] = useState(false)
+    const [isCartOpen, setIsCartOpen] = useState(false)
     const [selectedLink, setSelectedLink] = useState({
         all:{},
         tech:{},
@@ -24,12 +25,6 @@ const Nav = () => {
     const {cartItems} = useSelector(state => state.cart)
 
     const cartQty = cartItems.reduce((total, item) => total + item.qty, 0)
-
-    const navigate = useNavigate()
-
-    const handleClickCart = () => {
-        navigate("/cart")
-    }
 
     useEffect(() => {
         if(window.location.pathname === "/cart"){
@@ -51,12 +46,12 @@ const Nav = () => {
             <img src="./images/svg 21.png" className="logo-point" alt="" />
         </div>
         <div className="nav-controls">
-                <div onClick={() => setIsSelectorOpen(!isSelectorOpen)} className="nav-currency-selector"> 
+                <div onClick={() => {setIsSelectorOpen(!isSelectorOpen) ; setIsCartOpen(false)}} className="nav-currency-selector"> 
                     <p>$</p> 
                     <img style={isSelectorOpen ? {transform: "rotate(180deg)"} : {display:""}} src="../images/arrow.png" className="arrow" alt="" />
                     {isSelectorOpen && <CurrencySelector/>}
                 </div>
-                <div onClick={handleClickCart} className="full-cart" >
+                <div onClick={() => {setIsCartOpen(!isCartOpen) ; setIsSelectorOpen(false)}} className="full-cart" >
                     <div className="cart">
                         <img src="../images/Vector.png" alt=""/>
                     </div> 
@@ -67,6 +62,7 @@ const Nav = () => {
                         <img src="../images/wheel.png" alt="" />
                         <img src="../images/wheel.png" alt="" />
                     </div>
+                    {isCartOpen && <MiniCart/>}
                 </div>
         </div>
     </nav>
