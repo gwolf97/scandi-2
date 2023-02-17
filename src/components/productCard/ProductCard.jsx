@@ -1,10 +1,13 @@
 import React,{ useState } from 'react'
 import "./productCard.css"
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
 
   const [showCartBtn, setShowCartBtn] = useState(false)
+
+  const currency = useSelector(state => state.cart.currency)
 
   const navigate = useNavigate()
 
@@ -37,7 +40,7 @@ const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
         )}
         <div className='title-price-container'>
           <p onClick={handleClick} className='card-title'>{brand} {name}</p>
-          <p className='card-price'>{prices[0].currency.symbol}{prices[0].amount}</p>
+          <p className='card-price'>{prices[currency].currency.symbol}{prices[currency].amount}</p>
         </div>
     </div>
   )

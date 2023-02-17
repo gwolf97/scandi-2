@@ -11,7 +11,7 @@ import { addToCart } from '../../actions/cartActions'
 const ProductScreen = () => {
   const params = useParams()
   const dispatch = useDispatch()
-
+  const currency = useSelector(state => state.cart.currency)
 
   const [selectedImg, setSelectedImg] = useState("")
   const [gallery, setGallery] = useState([])
@@ -31,8 +31,8 @@ const ProductScreen = () => {
       setSelectedImg(data.product.gallery[0])
       setGallery(data.product.gallery)
       setPrice({
-        amount:data.product.prices[0].amount,
-        symbol:data.product.prices[0].currency.symbol
+        amount:data.product.prices[currency].amount,
+        symbol:data.product.prices[currency].currency.symbol
       })
       const attributesData = !loading && attributes.reduce((acc, attribute) => {
         acc[attribute.name] = attribute.items[0];

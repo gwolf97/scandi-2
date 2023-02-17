@@ -10,6 +10,7 @@ const CartScreen = () => {
   const dispatch = useDispatch()
 
   const cart = useSelector(state => state.cart.cartItems)
+  const currency = useSelector(state => state.cart.currency)
 
   const cartArray = Object.values(cart)
 
@@ -23,7 +24,7 @@ const CartScreen = () => {
 
   const total = (items) => {
     return items.reduce((acc, item) => {
-      const price = item.prices[0].amount;
+      const price = item.prices[currency].amount;
       const qty = item.qty;
       return acc + (price * qty);
     }, 0);
@@ -47,8 +48,8 @@ const CartScreen = () => {
                   <div className='item-name'>{item.name}</div>
                   <div className='item-brand'>{item.brand}</div>
                   <div className='item-price-container'>
-                    <div className='item-price-symbol'>{item.prices[0].currency.symbol}</div>
-                    <div className='item-price'>{item.prices[0].amount}</div>
+                    <div className='item-price-symbol'>{item.prices[currency].currency.symbol}</div>
+                    <div className='item-price'>{item.prices[currency].amount}</div>
                   </div>
                   <div>
                     {item.attributes
@@ -116,9 +117,9 @@ const CartScreen = () => {
            ))} 
       </div>
       <div className='total-container'>
-          <p>Tax: <span>{cart[0].prices[0].currency.symbol}0</span></p>
+          <p>Tax: <span>{cart[0].prices[currency].currency.symbol}0</span></p>
           <p>Quantity: <span>{sumQty(cart)}</span></p>
-          <p>Total: <span>{cart[0].prices[0].currency.symbol}{total(cart).toFixed(2)}</span></p>
+          <p>Total: <span>{cart[0].prices[currency].currency.symbol}{total(cart).toFixed(2)}</span></p>
           <div className='order-btn'>ORDER</div>
       </div>
     </div>
