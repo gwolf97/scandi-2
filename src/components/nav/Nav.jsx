@@ -1,21 +1,10 @@
 import React, { useState }  from 'react'
 import "./nav.css"
 import { Link } from "react-router-dom"
-import {useSelector} from "react-redux"
+import { useSelector} from "react-redux"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-
-const CurrencySelector = () => {
-    return (
-        <div className='currency-selector-container'>
-            <div className='currency'>$ USD</div>
-            <div className='currency'>£ GBP</div>
-            <div className='currency'>A$ AUD</div>
-            <div className='currency'>₽ RUB</div>
-            <div className='currency'>¥ JPY</div>
-        </div>
-    )
-}
+import { CurrencySelector } from '../index' 
 
 
 const Nav = () => {
@@ -65,7 +54,7 @@ const Nav = () => {
                 <div onClick={() => setIsSelectorOpen(!isSelectorOpen)} className="nav-currency-selector"> 
                     <p>$</p> 
                     <img style={isSelectorOpen ? {transform: "rotate(180deg)"} : {display:""}} src="../images/arrow.png" className="arrow" alt="" />
-                    {isSelectorOpen && CurrencySelector()}
+                    {isSelectorOpen && <CurrencySelector/>}
                 </div>
                 <div onClick={handleClickCart} className="full-cart" >
                     <div className="cart">

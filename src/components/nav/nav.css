@@ -150,25 +150,3 @@ nav{
 }
 
 
-/******************* Currency Selector *********************/
-/******************* Currency Selector *********************/
-/******************* Currency Selector *********************/
-
-.currency-selector-container{
-  position: absolute;
-  top: 65px;
-  margin-left: -12px;
-}
-
-.currency{
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 16px;
-  padding: 9px 10px;
-  width: 120px;
-}
-
-.currency:hover{
-  background-color: rgba(211, 211, 211, 0.456);
-}

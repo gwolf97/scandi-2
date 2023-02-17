@@ -8,11 +8,12 @@ const reducer = combineReducers({
 })
 
 const cartItemsFromStorage = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+const currencyFromStorage = localStorage.getItem("currency") ? JSON.parse(localStorage.getItem("currency")) : 0
 
 const initialState = {
     cart: {
         cartItems: cartItemsFromStorage,
-        currency: 4
+        currency: currencyFromStorage
     }
 }
 
