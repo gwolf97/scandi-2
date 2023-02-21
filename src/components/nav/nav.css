@@ -1,25 +1,28 @@
 
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1440px;
-    height: 80px;
-    padding: 0 80px;
+nav, .nav{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  height: 80px;
+  padding: 0 5%;
+  z-index: 30;
 }
 
-.link{
-    margin-right: 70px;
-    list-style: none;
-    font-size: 16px;
-    text-decoration: none;
-    color: black;
-    position: relative;
-    padding: 0.2em 0;
-    text-decoration: none;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+.link {
+  margin-right: 5vw;
+  list-style: none;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  position: relative;
+  padding: 0.2em 0;
+  text-decoration: none;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
 }
 
 .link:hover{
@@ -52,7 +55,7 @@ nav{
 .logo-box {
     width: 32px;
     height: 28px;
-    margin: 30px 0 20px -125px;
+    margin: 30px 0 20px auto;
   }
   
   .logo-arrow {
@@ -149,4 +152,47 @@ nav{
   padding: 0 0 0 5px;
 }
 
+.overlay {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100vw;
+  height: 4500px; 
+  background-color: lightgray;
+  opacity: 0.3;
+  z-index: 1;
+}
 
+
+
+@media (max-width: 767px) {
+
+  .logo-box{
+    position: relative;
+    margin: 0px 0px -5px 0;
+  }
+
+  .logo-arrow, .logo-point{
+    position: relative;
+    margin: 0 0px -25px 0;
+  }
+
+  .nav-controls{
+    padding: 34px 20px 32px 0;
+
+  }
+}
+
+@media (max-width: 389px) {
+  .logo-box{
+    display: none;
+  }
+
+  .link{
+    font-size: 12px;
+  }
+  .nav-controls{
+    padding: 34px 0px 32px 0;
+
+  }
+}

@@ -1,6 +1,6 @@
 .mini-cart{
     background-color: #ffffff;
-    z-index: 1;
+    z-index: 2;
 }
 
 .mini-list-container{
@@ -11,12 +11,11 @@
     height:677px;
     width: 325px;
     position: absolute;
-    top: 65px;
+    top: 70px;
     margin-left: -250px;
     padding: 0 15px;
     background-color: #ffffff;
-    z-index: 1;
-
+    z-index: 2;
 }
 
 .mini-items-container{

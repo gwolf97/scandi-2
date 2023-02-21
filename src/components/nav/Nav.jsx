@@ -20,6 +20,8 @@ const Nav = () => {
     const handleClick = (e) => {
         setSelectedLink({all:{},tech:{},clothes:{}})
         setSelectedLink({[e.target.id]:{color:"#5ece7b"}})
+        setIsCartOpen(false)
+        setIsSelectorOpen(false)
     }
 
     const {cartItems} = useSelector(state => state.cart)
@@ -35,38 +37,41 @@ const Nav = () => {
 
   return (
     <nav>
-        <div className='links'>
-            <Link className='link' style={selectedLink.all} id="all" onClick={(e) => handleClick(e)} to="/all">ALL</Link>
-            <Link className='link' style={selectedLink.tech} id="tech" onClick={(e) => handleClick(e)} to="/tech">TECH</Link>
-            <Link className='link' style={selectedLink.clothes} id="clothes" onClick={(e) => handleClick(e)} to="/clothes">CLOTHES</Link>
-        </div>
-        <div className="logo">
-            <img src="./images/svg3.png" className="logo-box" alt="" />
-            <img src="./images/svg19.png" className="logo-arrow" alt="" />
-            <img src="./images/svg 21.png" className="logo-point" alt="" />
-        </div>
-        <div className="nav-controls">
-                <div onClick={() => {setIsSelectorOpen(!isSelectorOpen) ; setIsCartOpen(false)}} className="nav-currency-selector"> 
-                    <p>$</p> 
-                    <img style={isSelectorOpen ? {transform: "rotate(180deg)"} : {display:""}} src="../images/arrow.png" className="arrow" alt="" />
-                    {isSelectorOpen && <CurrencySelector/>}
-                </div>
-                <div  >
-                    <div className="full-cart" onClick={() => {setIsCartOpen(!isCartOpen) ; setIsSelectorOpen(false)}}>
-                        <div className="cart">
-                            <img src="../images/Vector.png" alt=""/>
-                        </div> 
-                        <div style={cartQty === 0 ? {display:"none"} : {display:"flex"}} className="cart-amount">
-                            <p>{cartQty}</p>
-                        </div>
-                        <div className="nav-wheels">
-                            <img src="../images/wheel.png" alt="" />
-                            <img src="../images/wheel.png" alt="" />
-                        </div>
+        <div className='nav'>
+            <div className='links'>
+                <Link className='link' style={selectedLink.all} id="all" onClick={(e) => handleClick(e)} to="/all">ALL</Link>
+                <Link className='link' style={selectedLink.tech} id="tech" onClick={(e) => handleClick(e)} to="/tech">TECH</Link>
+                <Link className='link' style={selectedLink.clothes} id="clothes" onClick={(e) => handleClick(e)} to="/clothes">CLOTHES</Link>
+            </div>
+            <div className="logo">
+                <img src="./images/svg3.png" className="logo-box" alt="" />
+                <img src="./images/svg19.png" className="logo-arrow" alt="" />
+                <img src="./images/svg 21.png" className="logo-point" alt="" />
+            </div>
+            <div className="nav-controls">
+                    <div onClick={() => {setIsSelectorOpen(!isSelectorOpen) ; setIsCartOpen(false)}} className="nav-currency-selector"> 
+                        <p>$</p> 
+                        <img style={isSelectorOpen ? {transform: "rotate(180deg)"} : {display:""}} src="../images/arrow.png" className="arrow" alt="" />
+                        {isSelectorOpen && <CurrencySelector/>}
                     </div>
-                    {isCartOpen && <MiniCart setIsCartOpen={setIsCartOpen}/>}
-                </div>
+                    <div  >
+                        <div className="full-cart" onClick={() => {setIsCartOpen(!isCartOpen) ; setIsSelectorOpen(false)}}>
+                            <div className="cart">
+                                <img src="../images/Vector.png" alt=""/>
+                            </div> 
+                            <div style={cartQty === 0 ? {display:"none"} : {display:"flex"}} className="cart-amount">
+                                <p>{cartQty}</p>
+                            </div>
+                            <div className="nav-wheels">
+                                <img src="../images/wheel.png" alt="" />
+                                <img src="../images/wheel.png" alt="" />
+                            </div>
+                        </div>
+                        {isCartOpen && <MiniCart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen}/>}
+                    </div>
+            </div>
         </div>
+        {isCartOpen && <div onClick={() => setIsCartOpen(false)} className='overlay'></div>}
     </nav>
   )
 }

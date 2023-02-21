@@ -5,7 +5,7 @@ import "./miniCart.css"
 import { addToCart, removeFromCart } from '../../actions/cartActions'
 import { useNavigate } from 'react-router-dom'
 
-const MiniCart = ({setIsCartOpen}) => {
+const MiniCart = ({setIsCartOpen, isCartOpen}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
