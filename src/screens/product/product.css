@@ -129,3 +129,60 @@ section{
   font-weight: 500;
 }
 
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: 0.2fr 0.8fr;
+    grid-template-rows: auto;
+    gap: 20px 0;
+    grid-template-areas:
+      "img-gallery lg-gallery-img"
+      "controls-description controls-description";
+  }
+
+  .lg-gallery-img {
+    min-width: 100%;
+  }
+  .controls-description {
+    min-width: 100%;
+  }
+
+  .pdp-brand, .pdp-name, .attribute, .pdp-price p {
+    font-size: 20px; 
+  }
+
+  .pdp-price {
+    font-size: 28px;
+  }
+
+  .attribute-btn {
+    font-size: 12px; 
+    width: 50px; 
+    height: 35px; 
+  }
+
+  .pdp-add-to-cart-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 786px) {
+
+  section{
+    padding: 0 40px;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 0 0;
+    grid-template-areas:
+     "lg-gallery-img"
+     "img-gallery"
+      "controls-description";
+  }
+
+  .img-gallery{
+    height: 120px;
+  }
+
+}

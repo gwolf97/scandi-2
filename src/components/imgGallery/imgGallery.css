@@ -12,8 +12,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     margin-bottom: 20px;
     scroll-snap-align: start;
     cursor: pointer;
@@ -23,3 +23,21 @@
     max-height: 110px;
     max-width: 110px;
 }
+
+@media (max-width: 786px) {
+
+
+    .y-gallery-container {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      scroll-snap-type: x mandatory;
+    }
+    
+    .y-img-container {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 20px;
+    }
+  }
+  

@@ -165,7 +165,7 @@ nav, .nav{
 
 
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
   .logo-box{
     position: relative;
@@ -183,7 +183,7 @@ nav, .nav{
   }
 }
 
-@media (max-width: 389px) {
+@media (max-width: 480px) {
   .logo-box{
     display: none;
   }
