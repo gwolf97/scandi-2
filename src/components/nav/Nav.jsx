@@ -64,7 +64,7 @@ const Nav = () => {
                             <img src="../images/wheel.png" alt="" />
                         </div>
                     </div>
-                    {isCartOpen && <MiniCart/>}
+                    {isCartOpen && <MiniCart setIsCartOpen={setIsCartOpen}/>}
                 </div>
         </div>
     </nav>

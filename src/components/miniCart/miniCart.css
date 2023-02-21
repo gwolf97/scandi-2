@@ -1,3 +1,8 @@
+.mini-cart{
+    background-color: #ffffff;
+    z-index: 1;
+}
+
 .mini-list-container{
     display: flex;
     flex-direction: column;
@@ -7,9 +12,11 @@
     width: 325px;
     position: absolute;
     top: 65px;
-    margin-left: -300px;
-    border: 1px solid black;
+    margin-left: -250px;
     padding: 0 15px;
+    background-color: #ffffff;
+    z-index: 1;
+
 }
 
 .mini-items-container{
@@ -99,7 +106,7 @@ align-items: center;
 
 .mini-attribute-value{
 font-family: "Source Sans Pro", sans-serif;
-font-size: 1vw;
+font-size: 45%;
 font-weight: 400;
 display: flex;
 flex-direction: center;
@@ -242,6 +249,7 @@ scroll-snap-align: center;
     font-size: 14px;
     color:#1d1f22;   
     border: 1px solid #1d1f22;
+    cursor: pointer;
 }
 
 .mini-check-out-btn{
@@ -255,4 +263,5 @@ scroll-snap-align: center;
     font-size: 14px;
     color: #ffffff;
     background-color: #5ECE7B;
+    cursor: pointer;
 }

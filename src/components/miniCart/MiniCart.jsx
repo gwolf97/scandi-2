@@ -3,9 +3,11 @@ import { Header} from '../../components'
 import {useDispatch, useSelector} from "react-redux"
 import "./miniCart.css"
 import { addToCart, removeFromCart } from '../../actions/cartActions'
+import { useNavigate } from 'react-router-dom'
 
-const MiniCart = () => {
+const MiniCart = ({setIsCartOpen}) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const cart = useSelector(state => state.cart.cartItems)
     const currency = useSelector(state => state.cart.currency)
@@ -37,7 +39,7 @@ const MiniCart = () => {
     } 
     
     return (
-      <div>
+      <div className='mini-cart'>
         <div className='mini-list-container'>
             <div className='mini-qty'>
                 My Bag,<span>{sumQty(cart)} item{sumQty(cart) > 1 && "s"}</span>
@@ -50,7 +52,7 @@ const MiniCart = () => {
                     <div className='mini-item-brand'>{item.brand}</div>
                     <div className='mini-item-price-container'>
                       <div className='mini-item-price-symbol'>{item.prices[currency].currency.symbol}</div>
-                      <div className='mini-item-price'>{item.prices[currency].amount}</div>
+                      <div className='mini-item-price'>{item.prices[currency].amount.toFixed(2)}</div>
                     </div>
                     <div>
                       {item.attributes
@@ -121,8 +123,8 @@ const MiniCart = () => {
                     <p className='mini-amount'>{cart[0].prices[currency].currency.symbol}{total(cart).toFixed(2)}</p>
                 </div>
                 <div className='mini-cart-btns-container'>
-                    <div className='mini-view-bag-btn'>VIEW BAG</div>
-                    <div className='mini-check-out-btn'>CHECK OUT</div>
+                    <div onClick={() => {navigate("/cart"); setIsCartOpen(false)}} className='mini-view-bag-btn'>VIEW BAG</div>
+                    <div onClick={() => {navigate("/cart"); setIsCartOpen(false)}} className='mini-check-out-btn'>CHECK OUT</div>
                 </div>
             </div>
         </div>
