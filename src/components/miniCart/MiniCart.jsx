@@ -71,7 +71,8 @@ const MiniCart = ({setIsCartOpen, isCartOpen}) => {
                                       width:"20px",
                                       height:"20px",
                                       fontSize:"0",
-                                      border:"1px solid #5ECE7B",
+                                      border:"none",
+                                      boxShadow: "0 0 0 1px white, 0 0 0 3px #5ECE7B",
                                     }
                                   : att.id.toLocaleLowerCase() === "color"
                                   ? {

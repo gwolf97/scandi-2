@@ -70,6 +70,8 @@ const ProductScreen = () => {
     
   }
 
+  console.log(selectedAttributes)
+
   return (
     <section>
       <div className='grid-container'>
@@ -94,8 +96,25 @@ const ProductScreen = () => {
                           className='attribute-btn'
                           onClick={() => handleSelect(item.value, item.id, item.displayValue, attribute.name)}
                           key={item.id}
-                          style={attribute.id === "Color"
-                          ? {color:item.value, backgroundColor:item.value} 
+                          style={attribute.id.toLowerCase() === "color" && item.displayValue === selectedAttributes["Color"].displayValue 
+                          ? {
+                            color: item.value, 
+                            backgroundColor: item.value,
+                            width:"32px",
+                            height:"32px",
+                            fontSize:"0",
+                            border:"none",
+                            boxShadow: "0 0 0 1px white, 0 0 0 3px #5ECE7B",
+                          } 
+                          : attribute.id.toLocaleLowerCase() === "color"
+                          ?{
+                            color: item.value, 
+                            backgroundColor: item.value,
+                            width:"32px",
+                            height:"32px",
+                            fontSize:"0",
+                            border:"none"
+                          }
                           : {
                               color:
                               selectedAttributes[attribute.name]?.value === item.value 

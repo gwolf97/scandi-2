@@ -105,5 +105,16 @@
         height: 200px;
     }
 
+    .card-cart-button{
+        margin: 110px 0 0 160px;
+    }
+    
+    .card-cart-button img{
+        margin: 0px 0 0 -5px;
+    }
+    
+    .wheels{
+        padding: 0 0 0 5px;
+    }
 
 }
