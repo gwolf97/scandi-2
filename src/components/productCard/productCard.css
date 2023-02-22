@@ -93,3 +93,17 @@
     width: 350px;
     height: 350px;
 }
+
+
+@media (max-width:480px){
+    .card{
+        max-width: 280px;
+    }
+
+    .img-container, .img-container img, .out-of-stock-overlay{
+        width: 200px;
+        height: 200px;
+    }
+
+
+}

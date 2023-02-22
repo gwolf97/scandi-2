@@ -40,7 +40,7 @@ const CartScreen = () => {
   
   return (
     <div>
-      <Header/>
+        <Header/>
       <div className='list-container'>
            {cartArray.map(item => (
             <div className='item-container'>

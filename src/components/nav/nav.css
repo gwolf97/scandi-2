@@ -195,4 +195,13 @@ nav, .nav{
     padding: 34px 0px 32px 0;
 
   }
+
+  .link::after {
+   display: none;
+  }
+  
+  .link:hover::after,
+  .link:focus::after {
+    display: none;
+  }
 }
