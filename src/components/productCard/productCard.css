@@ -92,6 +92,10 @@
     background-color: hsl(231, 6%, 58%, 0.3);
     width: 350px;
     height: 350px;
+    font-size: 24px;
+    font-weight: 400;
+    font-family: "Raleway", sans-serif;
+    color: #8D8F9A;
 }
 
 
@@ -103,6 +107,10 @@
     .img-container, .img-container img, .out-of-stock-overlay{
         width: 200px;
         height: 200px;
+    }
+
+    .out-of-stock-overlay{
+        font-size: 18px;
     }
 
     .card-cart-button{

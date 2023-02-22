@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import "./product.css"
 import { useQuery } from '@apollo/client'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import GET_PRODUCT_BY_ID from "./productQueries"
 import { ImgGallery } from '../../components'
 import { useDispatch, useSelector} from "react-redux"
@@ -11,6 +11,7 @@ import { addToCart } from '../../actions/cartActions'
 const ProductScreen = () => {
   const params = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const currency = useSelector(state => state.cart.currency)
 
   const [selectedImg, setSelectedImg] = useState("")
@@ -20,13 +21,15 @@ const ProductScreen = () => {
     symbol:""
   })
   const [selectedAttributes, setSelectedAttributes] = useState({})
+  const [loaded, setLoaded] = useState(false) 
 
   const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` } });
 
-  const {attributes, name, brand, description, inStock, prices} = !loading && data.product
+  const {attributes, name, brand, description, inStock, prices, category} = !loading && data.product
 
   useEffect(() => {
     setSelectedAttributes({})
+    setLoaded(false)
     if(!loading){
       setSelectedImg(data.product.gallery[0])
       setGallery(data.product.gallery)
@@ -39,8 +42,9 @@ const ProductScreen = () => {
         return acc;
     }, {});
       setSelectedAttributes(attributesData);
+      setLoaded(true)
     }
-  },[loading])
+  },[loading, navigate])
 
   const handleSelect = (value, id, displayValue, name) => {
     const updateSelected = {
@@ -63,6 +67,7 @@ const ProductScreen = () => {
       gallery:gallery,
       prices:prices,
       id: params.id,
+      category: category,
       qty: 1,
     }
 
@@ -74,6 +79,7 @@ const ProductScreen = () => {
 
   return (
     <section>
+{!loaded && !loading ? (<div>loading...</div>) : (
       <div className='grid-container'>
         <div className='img-gallery'>
           <ImgGallery setSelectedImg={setSelectedImg} gallery={gallery}/>
@@ -96,7 +102,7 @@ const ProductScreen = () => {
                           className='attribute-btn'
                           onClick={() => handleSelect(item.value, item.id, item.displayValue, attribute.name)}
                           key={item.id}
-                          style={attribute.id.toLowerCase() === "color" && item.displayValue === selectedAttributes["Color"].displayValue 
+                          style={attribute.id.toLowerCase() === "color" && item.displayValue === selectedAttributes["Color"].displayValue
                           ? {
                             color: item.value, 
                             backgroundColor: item.value,
@@ -150,7 +156,7 @@ const ProductScreen = () => {
             {`${description}`}
           </div>
         </div>
-      </div>
+      </div>)}
     </section>
   )
 }

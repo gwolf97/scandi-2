@@ -73,6 +73,12 @@ font-family: "Raleway", sans-serif;
 font-size: 15px;
 font-weight: 300;
 }
+
+.mini-item-name:hover{
+    color: #5ece7b;
+    cursor: pointer;
+}
+
 .mini-item-brand{
 font-family: "Raleway", sans-serif;
 font-size: 16px;
@@ -264,4 +270,10 @@ scroll-snap-align: center;
     color: #ffffff;
     background-color: #5ECE7B;
     cursor: pointer;
+}
+
+@media (max-width:480px){
+    .mini-list-container{
+        height: 500px;
+    }
 }

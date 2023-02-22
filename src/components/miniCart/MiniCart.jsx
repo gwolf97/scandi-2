@@ -1,14 +1,13 @@
 import React from 'react'
-import { Header} from '../../components'
 import {useDispatch, useSelector} from "react-redux"
 import "./miniCart.css"
 import { addToCart, removeFromCart } from '../../actions/cartActions'
 import { useNavigate } from 'react-router-dom'
 
-const MiniCart = ({setIsCartOpen, isCartOpen}) => {
+const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+ 
     const cart = useSelector(state => state.cart.cartItems)
     const currency = useSelector(state => state.cart.currency)
   
@@ -48,7 +47,13 @@ const MiniCart = ({setIsCartOpen, isCartOpen}) => {
              {cartArray.map(item => (
               <div className='mini-item-container'>
                   <div className='mini-details-container'>
-                    <div className='mini-item-name'>{item.name}</div>
+                    <div onClick={() => {
+                        navigate(`/${item.category}/${item.id}`); setIsCartOpen(false); setSelectedLink({all:{},tech:{},clothes:{}}) ; window.location.reload()
+                      }} 
+                        className='mini-item-name'
+                    >
+                      {item.name}
+                    </div>
                     <div className='mini-item-brand'>{item.brand}</div>
                     <div className='mini-item-price-container'>
                       <div className='mini-item-price-symbol'>{item.prices[currency].currency.symbol}</div>

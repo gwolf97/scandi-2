@@ -3,11 +3,13 @@ import { Header} from '../../components'
 import {useDispatch, useSelector} from "react-redux"
 import "./cart.css"
 import { addToCart, removeFromCart } from '../../actions/cartActions'
+import { useNavigate } from 'react-router-dom'
 
 
 const CartScreen = () => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const cart = useSelector(state => state.cart.cartItems)
   const currency = useSelector(state => state.cart.currency)
@@ -45,7 +47,7 @@ const CartScreen = () => {
            {cartArray.map(item => (
             <div className='item-container'>
                 <div className='details-container'>
-                  <div className='item-name'>{item.name}</div>
+                  <div onClick={() => navigate(`/${item.category}/${item.id}`)} className='item-name'>{item.name}</div>
                   <div className='item-brand'>{item.brand}</div>
                   <div className='item-price-container'>
                     <div className='item-price-symbol'>{item.prices[currency].currency.symbol}</div>

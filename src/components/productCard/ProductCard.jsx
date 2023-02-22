@@ -26,7 +26,7 @@ const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
   return (
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='card'>
         <div onClick={handleClick} className='img-container'>
-          {!inStock && (<div className='out-of-stock-overlay'>out of stock</div>)}
+          {!inStock && (<div className='out-of-stock-overlay'>OUT OF STOCK</div>)}
           <img src={gallery[0]} alt={name} />
         </div>
         {showCartBtn && inStock && (
