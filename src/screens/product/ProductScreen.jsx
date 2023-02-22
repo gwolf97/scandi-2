@@ -58,6 +58,8 @@ const ProductScreen = () => {
       setSelectedAttributes(updateSelected)
   }
 
+  console.log(selectedAttributes)
+
   const handleAddToCart = () => {
     const item = {
       selectedAttributes: selectedAttributes,
@@ -74,8 +76,6 @@ const ProductScreen = () => {
     dispatch(addToCart(item))
     
   }
-
-  console.log(selectedAttributes)
 
   return (
     <section>
@@ -111,6 +111,7 @@ const ProductScreen = () => {
                             fontSize:"0",
                             border:"none",
                             boxShadow: "0 0 0 1px white, 0 0 0 3px #5ECE7B",
+                            paddingLeft:"10px"
                           } 
                           : attribute.id.toLocaleLowerCase() === "color"
                           ?{

@@ -1,11 +1,16 @@
 import React,{ useState } from 'react'
 import "./productCard.css"
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import GET_PRODUCT_BY_ID from '../../screens/product/productQueries'
+import { addToCart } from '../../actions/cartActions'
+import { useQuery } from '@apollo/client'
 
 const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
 
   const [showCartBtn, setShowCartBtn] = useState(false)
+
+  const dispatch = useDispatch()
 
   const currency = useSelector(state => state.cart.currency)
 
@@ -14,13 +19,41 @@ const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
   const handleMouseOver = () => {
     setShowCartBtn(true)
   }
-
+ 
   const handleMouseOut = () => {
     setShowCartBtn(false)
   }
 
   const handleClick = () => {
     navigate(`/${category}/${id}`)
+  }
+
+  const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${id}` } });
+
+  const handleAddToCart = () => {
+
+
+
+    const {attributes, prices, category} = !loading && data.product
+
+    const attributesData = !loading && attributes.reduce((acc, attribute) => {
+      acc[attribute.name] = attribute.items[0];
+      return acc;
+    },{})
+
+    const item = {
+      selectedAttributes:attributesData,
+      attributes:attributes,
+      name:name,
+      brand:brand,
+      gallery:gallery,
+      prices:prices,
+      id: id,
+      category: category,
+      qty: 1,
+    }
+
+    dispatch(addToCart(item))
   }
 
   return (
@@ -30,7 +63,7 @@ const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
           <img src={gallery[0]} alt={name} />
         </div>
         {showCartBtn && inStock && (
-          <div className='card-cart-button'>
+          <div onClick={() => handleAddToCart()} className='card-cart-button'>
             <img src="./images/white-cart.png" alt="cart" />
               <div className="wheels">
                 <img src="./images/white-wheel.png" alt="wheel" />
