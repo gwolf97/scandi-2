@@ -27,8 +27,6 @@ const ProductScreen = () => {
 
   const {attributes, name, brand, description, inStock, prices, category, gallery:galleryData} = !loading && data.product
 
-  console.log(data)
-
   useEffect(() => {
     setSelectedAttributes({})
     setLoaded(false)
@@ -59,8 +57,6 @@ const ProductScreen = () => {
 
       setSelectedAttributes(updateSelected)
   }
-
-  console.log(selectedAttributes)
 
   const handleAddToCart = () => {
     const item = {

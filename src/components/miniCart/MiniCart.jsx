@@ -37,7 +37,6 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
       dispatch(removeFromCart(product))
     } 
 
-    console.log(cartArray)
     return (
       <div className='mini-cart'>
         <div className='mini-list-container'>
@@ -45,11 +44,11 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
                 My Bag,<span>{sumQty(cart)} item{sumQty(cart) > 1 && "s"}</span>
             </div>
             <div className='mini-items-container'>
-             {cartArray.map(item => (
-              <div key={"mini" + item.id + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='mini-item-container'>
+             {cartArray.map((item, index) => (
+              <div key={"mini" + item.id + index} className='mini-item-container'>
                   <div className='mini-details-container'>
                     <div onClick={() => {
-                        navigate(`/${item.category}/${item.id}`); setIsCartOpen(false); setSelectedLink({all:{},tech:{},clothes:{}}) ; window.location.reload()
+                        navigate(`/${item.category}/${item.id}`); setIsCartOpen(false); setSelectedLink({all:{},tech:{},clothes:{}})
                       }} 
                         className='mini-item-name'
                     >
@@ -63,12 +62,12 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
                     <div>
                       {item.attributes
                       .map((att) => (
-                      <div key={"mini" + att.id + att.name + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='mini-attributes-container'>
+                      <div key={"mini" + att.id + att.name + index} className='mini-attributes-container'>
                         <div className='mini-attribute-key'>{att.id.toUpperCase()}:</div>
                         <div className='mini-attribute-values-container'>
                           {att.items.map(val => (
                             <div
-                                key={"mini" + val.displayValue + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} 
+                                key={"mini" + val.displayValue + index} 
                                 className='mini-attribute-value' 
                                 style={
                                   att.id.toLocaleLowerCase() === "color" && val.displayValue === item.selectedAttributes[att.id].displayValue 

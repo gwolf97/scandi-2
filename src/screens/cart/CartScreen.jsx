@@ -43,8 +43,8 @@ const CartScreen = () => {
     <div>
         <Header/>
       {cart.length === 0 ? (<div className='empty-cart'>NO ITEMS</div>) : (<><div className='list-container'>
-           {cartArray.map(item => (
-            <div key={item.id + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='item-container'>
+           {cartArray.map((item, index) => (
+            <div key={item.id + index} className='item-container'>
                 <div className='details-container'>
                   <div onClick={() => navigate(`/${item.category}/${item.id}`)} className='item-name'>{item.name}</div>
                   <div className='item-brand'>{item.brand}</div>
@@ -55,12 +55,12 @@ const CartScreen = () => {
                   <div>
                     {item.attributes
                     .map((att) => (
-                    <div key={att.id +  cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='attributes-container'>
+                    <div key={att.id +  index} className='attributes-container'>
                       <div className='attribute-key'>{att.id.toUpperCase()}:</div>
                       <div className='attribute-values-container'>
                         {att.items.map(val => (
                           <div 
-                              key={val.displayValue +  cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))}
+                              key={val.displayValue +  index}
                               className='attribute-value' 
                               style={
                                 att.id.toLocaleLowerCase() === "color" && val.displayValue === item.selectedAttributes[att.id].displayValue 
@@ -103,7 +103,7 @@ const CartScreen = () => {
                   </div>
                   <div className='item-gallery-container'>
                       {item.gallery.map(img => (
-                        <img key={img + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} src={img} alt="gallery item"/>
+                        <img key={img + index} src={img} alt="gallery item"/>
                       ))}
                   </div>
                    {item.gallery.length > 1 && (
