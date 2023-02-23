@@ -44,7 +44,7 @@ const CartScreen = () => {
         <Header/>
       {cart.length === 0 ? (<div className='empty-cart'>NO ITEMS</div>) : (<><div className='list-container'>
            {cartArray.map(item => (
-            <div className='item-container'>
+            <div key={item.id + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='item-container'>
                 <div className='details-container'>
                   <div onClick={() => navigate(`/${item.category}/${item.id}`)} className='item-name'>{item.name}</div>
                   <div className='item-brand'>{item.brand}</div>
@@ -55,11 +55,12 @@ const CartScreen = () => {
                   <div>
                     {item.attributes
                     .map((att) => (
-                    <div className='attributes-container'>
+                    <div key={att.id +  cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='attributes-container'>
                       <div className='attribute-key'>{att.id.toUpperCase()}:</div>
                       <div className='attribute-values-container'>
                         {att.items.map(val => (
                           <div 
+                              key={val.displayValue +  cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))}
                               className='attribute-value' 
                               style={
                                 att.id.toLocaleLowerCase() === "color" && val.displayValue === item.selectedAttributes[att.id].displayValue 
@@ -102,16 +103,16 @@ const CartScreen = () => {
                   </div>
                   <div className='item-gallery-container'>
                       {item.gallery.map(img => (
-                        <img src={img}/>
+                        <img key={img + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} src={img} alt="gallery item"/>
                       ))}
                   </div>
                    {item.gallery.length > 1 && (
                     <>
                       <div onClick={(e) => e.target.parentElement.children[1].scrollBy(-100, 0)}  className='arrow-container-left'>
-                        <img src="./images/gallery-left.png" alt="" className="gallery-left" />
+                        <img src="./images/gallery-left.png" alt="left button" className="gallery-left" />
                       </div>
                       <div onClick={(e) => e.target.parentElement.children[1].scrollBy(100, 0)} className='arrow-container-right'>
-                        <img src="./images/gallery-left.png" alt="" className="gallery-right" />
+                        <img src="./images/gallery-left.png" alt="right button" className="gallery-right" />
                       </div>
                     </>)}
                 </div>

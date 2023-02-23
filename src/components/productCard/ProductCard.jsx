@@ -28,7 +28,7 @@ const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
     navigate(`/${category}/${id}`)
   }
 
-  const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${id}` } });
+  const { data, loading } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${id}` } });
 
   const handleAddToCart = () => {
 

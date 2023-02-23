@@ -6,14 +6,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Header, ProductCard } from '../../components';
 
 const HomeScreen = () => {
-  const {error, data, loading} = useQuery(GET_PRODUCTS);
+  const { data, loading} = useQuery(GET_PRODUCTS);
   const [category, setCategory] = useState(0)
   const params = useParams()
   const navigate = useNavigate()
 
   const products = loading ? null : data.categories[category].products
-
-  console.log(data)
 
   useEffect(() => {
     if(!params.category){
@@ -26,7 +24,7 @@ const HomeScreen = () => {
     }else{
       setCategory(0)
     }
-  }, [params])
+  }, [params, navigate])
   
   return (
     <main>

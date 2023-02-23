@@ -36,7 +36,8 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
     const handleSubtract = (product) => {
       dispatch(removeFromCart(product))
     } 
-    
+
+    console.log(cartArray)
     return (
       <div className='mini-cart'>
         <div className='mini-list-container'>
@@ -45,7 +46,7 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
             </div>
             <div className='mini-items-container'>
              {cartArray.map(item => (
-              <div className='mini-item-container'>
+              <div key={"mini" + item.id + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='mini-item-container'>
                   <div className='mini-details-container'>
                     <div onClick={() => {
                         navigate(`/${item.category}/${item.id}`); setIsCartOpen(false); setSelectedLink({all:{},tech:{},clothes:{}}) ; window.location.reload()
@@ -62,11 +63,12 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
                     <div>
                       {item.attributes
                       .map((att) => (
-                      <div className='mini-attributes-container'>
+                      <div key={"mini" + att.id + att.name + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} className='mini-attributes-container'>
                         <div className='mini-attribute-key'>{att.id.toUpperCase()}:</div>
                         <div className='mini-attribute-values-container'>
                           {att.items.map(val => (
-                            <div 
+                            <div
+                                key={"mini" + val.displayValue + cartArray.findIndex(x => x.id === item.id && JSON.stringify(x.selectedAttributes) === JSON.stringify(item.selectedAttributes))} 
                                 className='mini-attribute-value' 
                                 style={
                                   att.id.toLocaleLowerCase() === "color" && val.displayValue === item.selectedAttributes[att.id].displayValue 
@@ -109,7 +111,7 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
                       <div onClick={() => handleSubtract(item)} className='mini-item-qty-sub'>-</div>
                     </div>
                     <div className='mini-item-gallery-container'>
-                          <img src={item.gallery[0]}/>
+                          <img src={item.gallery[0]} alt="gallery"/>
                     </div>
                      {item.gallery.length > 1 && (
                       <>

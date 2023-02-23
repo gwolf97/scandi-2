@@ -23,21 +23,21 @@ const ProductScreen = () => {
   const [selectedAttributes, setSelectedAttributes] = useState({})
   const [loaded, setLoaded] = useState(false) 
 
-  const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` } });
+  const { data, loading } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` } });
 
-  const {attributes, name, brand, description, inStock, prices, category} = !loading && data.product
+  const {attributes, name, brand, description, inStock, prices, category, gallery:galleryData} = !loading && data.product
 
-  console.log(attributes)
+  console.log(data)
 
   useEffect(() => {
     setSelectedAttributes({})
     setLoaded(false)
     if(!loading){
-      setSelectedImg(data.product.gallery[0])
-      setGallery(data.product.gallery)
+      setSelectedImg(galleryData[0])
+      setGallery(galleryData)
       setPrice({
-        amount:data.product.prices[currency].amount,
-        symbol:data.product.prices[currency].currency.symbol
+        amount:prices[currency].amount,
+        symbol:prices[currency].currency.symbol
       })
       const attributesData = !loading && attributes.reduce((acc, attribute) => {
         acc[attribute.name] = attribute.items[0];
@@ -46,7 +46,7 @@ const ProductScreen = () => {
       setSelectedAttributes(attributesData);
       setLoaded(true)
     }
-  },[loading, navigate])
+  },[loading, navigate, attributes, currency, galleryData, prices ])
 
   const handleSelect = (value, id, displayValue, name) => {
     const updateSelected = {
@@ -87,7 +87,7 @@ const ProductScreen = () => {
           <ImgGallery setSelectedImg={setSelectedImg} gallery={gallery}/>
         </div>
         <div className='lg-gallery-img'>
-          <img src={selectedImg} alt="product image" />
+          <img src={selectedImg} alt="product" />
         </div>
         <div className='controls-description'>
           <div className='pdp-title'>

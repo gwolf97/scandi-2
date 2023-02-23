@@ -18,7 +18,7 @@
 .mini-list-container{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
     height:677px;
     width: 325px;
@@ -33,7 +33,7 @@
 .mini-items-container{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     max-height: 800px;
     overflow-y: scroll;
@@ -52,7 +52,7 @@
 .mini-qty{
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
     font-family: "Raleway", sans-serif;
@@ -73,8 +73,8 @@
     display: flex;
     text-align: left;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     line-height: 160%;
     overflow: hidden;
     margin-top: -5px ;
@@ -117,7 +117,7 @@ margin: 5px 0;
 width: 100%;
 display:flex;
 flex-direction: row;
-justify-content: start;
+justify-content: flex-start;
 align-items: center;
 margin-bottom: 4px;
 }
@@ -225,7 +225,7 @@ scroll-snap-align: center;
     height: 210px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     padding-bottom: 30px;
 }

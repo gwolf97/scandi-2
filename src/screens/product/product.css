@@ -81,7 +81,7 @@ section{
 .attribute-btns-container{
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 12px;
 }

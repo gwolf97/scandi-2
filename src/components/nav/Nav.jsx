@@ -1,12 +1,14 @@
 import React, { useState }  from 'react'
 import "./nav.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useSelector} from "react-redux"
 import { useEffect } from 'react'
 import { CurrencySelector, MiniCart } from '../index' 
 
 
 const Nav = () => {
+
+    const navigate = useNavigate()
 
     const [isSelectorOpen, setIsSelectorOpen] = useState(false)
     const [isCartOpen, setIsCartOpen] = useState(false)
@@ -31,7 +33,7 @@ const Nav = () => {
         if(window.location.pathname === "/cart"){
             setSelectedLink({all:{},tech:{},clothes:{}})
         }
-    },[window.location.pathname])
+    },[navigate])
 
 
   return (

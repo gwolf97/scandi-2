@@ -7,7 +7,7 @@ const ImgGallery = ({setSelectedImg, gallery}) => {
         {gallery.map(img => 
             (
             <div key={img}  className='y-img-container'>
-                <img onClick={() => setSelectedImg(img)} className="y-img" src={img} alt="product gallery image"/>
+                <img onClick={() => setSelectedImg(img)} className="y-img" src={img} alt="product gallery"/>
             </div>
             )
         )}
