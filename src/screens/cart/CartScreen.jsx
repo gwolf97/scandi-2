@@ -5,7 +5,6 @@ import "./cart.css"
 import { addToCart, removeFromCart } from '../../actions/cartActions'
 import { useNavigate } from 'react-router-dom'
 
-
 const CartScreen = () => {
 
   const dispatch = useDispatch()
@@ -43,7 +42,7 @@ const CartScreen = () => {
   return (
     <div>
         <Header/>
-      <div className='list-container'>
+      {cart.length === 0 ? (<div className='empty-cart'>NO ITEMS</div>) : (<><div className='list-container'>
            {cartArray.map(item => (
             <div className='item-container'>
                 <div className='details-container'>
@@ -124,7 +123,7 @@ const CartScreen = () => {
           <p>Quantity: <span>{sumQty(cart)}</span></p>
           <p>Total: <span>{cart[0].prices[currency].currency.symbol}{total(cart).toFixed(2)}</span></p>
           <div className='order-btn'>ORDER</div>
-      </div>
+      </div></>)}
     </div>
   )
 }

@@ -27,6 +27,8 @@ const ProductScreen = () => {
 
   const {attributes, name, brand, description, inStock, prices, category} = !loading && data.product
 
+  console.log(attributes)
+
   useEffect(() => {
     setSelectedAttributes({})
     setLoaded(false)
@@ -110,8 +112,7 @@ const ProductScreen = () => {
                             height:"32px",
                             fontSize:"0",
                             border:"none",
-                            boxShadow: "0 0 0 1px white, 0 0 0 3px #5ECE7B",
-                            paddingLeft:"10px"
+                            boxShadow: "0 0 0 1px white, 0 0 0 3px #5ECE7B",                 
                           } 
                           : attribute.id.toLocaleLowerCase() === "color"
                           ?{

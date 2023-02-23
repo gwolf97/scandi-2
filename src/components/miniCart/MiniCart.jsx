@@ -40,7 +40,7 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
     return (
       <div className='mini-cart'>
         <div className='mini-list-container'>
-            <div className='mini-qty'>
+            {cart.length === 0 ? (<div className='mini-empty-cart'>CART EMPTY</div>) : (<><div className='mini-qty'>
                 My Bag,<span>{sumQty(cart)} item{sumQty(cart) > 1 && "s"}</span>
             </div>
             <div className='mini-items-container'>
@@ -133,7 +133,7 @@ const MiniCart = ({setIsCartOpen, setSelectedLink}) => {
                     <div onClick={() => {navigate("/cart"); setIsCartOpen(false)}} className='mini-view-bag-btn'>VIEW BAG</div>
                     <div onClick={() => {navigate("/cart"); setIsCartOpen(false)}} className='mini-check-out-btn'>CHECK OUT</div>
                 </div>
-            </div>
+            </div></>)}
         </div>
       </div>
     )

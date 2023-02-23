@@ -13,6 +13,8 @@ const HomeScreen = () => {
 
   const products = loading ? null : data.categories[category].products
 
+  console.log(data)
+
   useEffect(() => {
     if(!params.category){
       navigate("/all")
