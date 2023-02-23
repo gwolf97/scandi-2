@@ -28,32 +28,40 @@ const ProductCard = ({brand, gallery, category, id, inStock, name, prices}) => {
     navigate(`/${category}/${id}`)
   }
 
-  const { data, loading } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${id}` } });
+  const { data, loading, refetch} = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${id}` }, fetchPolicy: "network-only" });
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
+    try {
 
+      const {data:newData, loading:newLoading} = await refetch()
 
-
-    const {attributes, prices, category} = !loading && data.product
-
-    const attributesData = !loading && attributes.reduce((acc, attribute) => {
-      acc[attribute.name] = attribute.items[0];
-      return acc;
-    },{})
-
-    const item = {
-      selectedAttributes:attributesData,
-      attributes:attributes,
-      name:name,
-      brand:brand,
-      gallery:gallery,
-      prices:prices,
-      id: id,
-      category: category,
-      qty: 1,
+        const {attributes, prices, category} = !newLoading && newData.product
+  
+        const attributesData = !newLoading && attributes.reduce((acc, attribute) => {
+          acc[attribute.name] = attribute.items[0];
+          return acc;
+        },{})
+    
+        const item = {
+          selectedAttributes:attributesData,
+          attributes:attributes,
+          name:name,
+          brand:brand,
+          gallery:gallery,
+          prices:prices,
+          id: id,
+          category: category,
+          qty: 1,
+        }
+    
+        dispatch(addToCart(item))
+    } catch (error) {
+      console.log(error)
     }
 
-    dispatch(addToCart(item))
+    await refetch()
+
+
   }
 
   return (

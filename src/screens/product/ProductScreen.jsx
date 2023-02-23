@@ -21,11 +21,13 @@ const ProductScreen = () => {
     symbol:""
   })
   const [selectedAttributes, setSelectedAttributes] = useState({})
-  const [loaded, setLoaded] = useState(false) 
+  const [loaded, setLoaded] = useState(false)
 
-  const { data, loading } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` } });
+  const { data, loading, refetch } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` }, fetchPolicy: "network-only"});
 
   const {attributes, name, brand, description, inStock, prices, category, gallery:galleryData} = !loading && data.product
+
+  console.log(data, params.id)
 
   useEffect(() => {
     setSelectedAttributes({})
@@ -44,7 +46,7 @@ const ProductScreen = () => {
       setSelectedAttributes(attributesData);
       setLoaded(true)
     }
-  },[loading, navigate, attributes, currency, galleryData, prices ])
+  },[loading, navigate, attributes, currency, galleryData, prices, params.id ])
 
   const handleSelect = (value, id, displayValue, name) => {
     const updateSelected = {
