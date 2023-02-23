@@ -100,7 +100,7 @@ const ProductScreen = () => {
                           className='attribute-btn'
                           onClick={() => handleSelect(item.value, item.id, item.displayValue, attribute.name)}
                           key={item.id}
-                          style={attribute.id.toLowerCase() === "color" && item.displayValue === selectedAttributes["Color"].displayValue
+                          style={attribute.id.toLowerCase() === "color" && item.displayValue === selectedAttributes["Color"]?.displayValue
                           ? {
                             color: item.value, 
                             backgroundColor: item.value,

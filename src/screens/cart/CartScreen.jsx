@@ -55,7 +55,7 @@ const CartScreen = () => {
                   <div>
                     {item.attributes
                     .map((att) => (
-                    <div key={att.id +  index} className='attributes-container'>
+                    <div key={att.id + index} className='attributes-container'>
                       <div className='attribute-key'>{att.id.toUpperCase()}:</div>
                       <div className='attribute-values-container'>
                         {att.items.map(val => (
