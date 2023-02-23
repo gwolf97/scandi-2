@@ -23,7 +23,7 @@ const ProductScreen = () => {
   const [selectedAttributes, setSelectedAttributes] = useState({})
   const [loaded, setLoaded] = useState(false)
 
-  const { data, loading, refetch } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` }, fetchPolicy: "network-only"});
+  const { data, loading } = useQuery(GET_PRODUCT_BY_ID, { variables: { productId: `${params.id}` }, fetchPolicy: "network-only"});
 
   const {attributes, name, brand, description, inStock, prices, category, gallery:galleryData} = !loading && data.product
 
