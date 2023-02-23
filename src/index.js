@@ -9,7 +9,7 @@ import store from "./store"
 
 
 const client = new ApolloClient({
-  uri:'http://localhost:4000/graphql',
+  uri:'https://scandiweb-j5i8.onrender.com/graphql',
   cache: new InMemoryCache()
 })
 
