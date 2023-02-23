@@ -79,7 +79,7 @@ const ProductScreen = () => {
 
   return (
     <section>
-{!loaded && !loading ? (<div>loading...</div>) : (
+{!loaded && loading ? (<div>loading...</div>) : (
       <div className='grid-container'>
         <div className='img-gallery'>
           <ImgGallery setSelectedImg={setSelectedImg} gallery={gallery}/>
