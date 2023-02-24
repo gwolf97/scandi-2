@@ -9,8 +9,9 @@ import store from "./store"
 
 
 const client = new ApolloClient({
-  uri:'https://scandiweb-j5i8.onrender.com/graphql',
-  cache: new InMemoryCache()
+  uri:'https://scandiweb-hptz.onrender.com/graphql',
+  cache: new InMemoryCache(),
+  mode:"no-cors"
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
