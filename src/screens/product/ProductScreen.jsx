@@ -27,8 +27,6 @@ const ProductScreen = () => {
 
   const {attributes, name, brand, description, inStock, prices, category, gallery:galleryData} = !loading && data.product
 
-  console.log(data, params.id)
-
   useEffect(() => {
     setSelectedAttributes({})
     setLoaded(false)
